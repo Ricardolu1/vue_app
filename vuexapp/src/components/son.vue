@@ -5,6 +5,7 @@
     我是子组件中拿到的全局状态：{{getNum}} <br>
     <button @click="sendMsgToFa">向父组件传递数据</button> <br>
     <button @click="sAdd">子组件--改变状态的按钮</button>
+    <button @click="sAddaciton">子组件--改变状态的按钮--action</button>
   </div>
 </template>
 
@@ -27,6 +28,10 @@
       },
       sAdd(){
         this.$store.commit('increase')
+      },
+      sAddaciton(){
+        this.$store.dispatch('decreaseAction')
+
       }
 
     },
@@ -34,6 +39,9 @@
       getNum(){
         return this.$store.state.num
       },
+       getCount(){
+        return this.$store.getters.getNum
+      }
 
     }
   }
